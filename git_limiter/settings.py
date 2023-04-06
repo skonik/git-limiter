@@ -9,5 +9,3 @@ class Settings:
     max_changed_files: int = constants.DEFAULT_MAX_CHANGED_FILES
     max_insertions: int = constants.DEFAULT_MAX_INSERTIONS
     max_deletions: int = constants.DEFAULT_MAX_DELETIONS
-
-

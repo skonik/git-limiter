@@ -2,22 +2,25 @@ import re
 import subprocess
 from typing import Union
 
-from git_limiter.backend.base import GitBackend, DiffStats
+from git_limiter.backend.base import GitBackend
 
 # Typing Aliases
+from git_limiter.stats import DiffStats
+
+
 ProcessInvokeResult = Union[subprocess.CompletedProcess, subprocess.CalledProcessError]
 
 
 class GitSubprocessBackend(GitBackend):
-    """ Implementation of git API via subprocess module in standard library. """
+    """Implementation of git API via subprocess module in standard library."""
 
     DIFF_STATS_RE = re.compile(
         pattern=r"""
                 (?P<changed_files>\d+)(?P<changed_files_text>\s*files\s*changed).*?  # 31 files changed, 
                 (?P<insertions>\d+)(?P<insertions_text>\s*insertions).*?             # 512 insertions, 
-                (?P<deletions>\d+)(?P<deletions_text>\s*deletions)                   # 512 deletions
+                (?P<deletions>\d+)(?P<deletions_text>\s*deletion)                   # 512 deletions
                 """,
-        flags=re.VERBOSE
+        flags=re.VERBOSE,
     )
 
     CHANGED_FILES_NUMBER_GROUP = "changed_files"
@@ -31,17 +34,16 @@ class GitSubprocessBackend(GitBackend):
                 "--no-pager",
                 "diff",
                 self._settings.compared_branch,
-                "--shortstat"
+                "--shortstat",
             ],
             capture_output=True,
         )
 
     def _parse_diff_stats(self, process_invoke_result: ProcessInvokeResult) -> DiffStats:
-        """ Parse resulting string and extract changed files count, insertions and deletions. """
+        """Parse resulting string and extract changed files count, insertions and deletions."""
         diff_stats_search = self.DIFF_STATS_RE.search(
-            string=process_invoke_result.stdout.decode('utf-8'),
+            string=process_invoke_result.stdout.decode("utf-8"),
         )
-
         # Extract from captured groups in regex
         changed_files: str = diff_stats_search.groupdict().get(
             self.CHANGED_FILES_NUMBER_GROUP,
@@ -60,7 +62,7 @@ class GitSubprocessBackend(GitBackend):
         )
 
     def diff_stats(self) -> DiffStats:
-        """ Invoke git in subprocess and collect stats. """
+        """Invoke git in subprocess and collect stats."""
         process_invoke_result = self._run_git_diff_via_subprocess()
         diff_stats = self._parse_diff_stats(process_invoke_result=process_invoke_result)
 

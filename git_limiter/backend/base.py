@@ -1,18 +1,8 @@
 import abc
-import dataclasses
 from typing import Optional
 
-from git_limiter.settings import GlobalSettings
-
-
-@dataclasses.dataclass
-class DiffStats:
-    # Count of changed files
-    changed_files: int
-    # Count of insertions
-    insertions: int
-    # Count of deletions
-    deletions: int
+from git_limiter.settings import Settings
+from git_limiter.stats import DiffStats
 
 
 class GitBackend(abc.ABC):
@@ -22,14 +12,12 @@ class GitBackend(abc.ABC):
 
     """
 
-    def __init__(self, settings: Optional[GlobalSettings] = None):
+    def __init__(self, settings: Optional[Settings] = None):
         if settings is None:
-            settings = GlobalSettings()
+            settings = Settings()
 
         self._settings = settings
 
     @abc.abstractmethod
     def diff_stats(self) -> DiffStats:
         raise NotImplementedError
-
-

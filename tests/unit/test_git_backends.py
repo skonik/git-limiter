@@ -4,14 +4,14 @@ from unittest.mock import patch
 
 import pytest
 
+from git_limiter import constants
 from git_limiter.backend.git_subprocess_backend import GitSubprocessBackend
-
-SUCCESS_CODE = 0
 
 
 CHANGED_FILES = 31
 INSERTIONS = 339
 DELETIONS = 256
+
 
 @dataclasses.dataclass
 class ProcessResultStub:
@@ -30,10 +30,10 @@ class SubprocessStub:
     def run(self, args: List[str], capture_output: bool) -> ProcessResultStub:
         return ProcessResultStub(
             args=args,
-            returncode=SUCCESS_CODE,
-            stdout=f' {CHANGED_FILES} files changed, '
-                   f'{INSERTIONS} insertions(+), '
-                   f'{DELETIONS} deletions(-)\n'.encode('utf-8')
+            returncode=constants.SUCCESS_CODE,
+            stdout=f" {CHANGED_FILES} files changed, "
+            f"{INSERTIONS} insertions(+), "
+            f"{DELETIONS} deletions(-)\n".encode("utf-8"),
         )
 
 
