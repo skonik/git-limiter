@@ -4,6 +4,7 @@ __pycache__/
 git_limiter/__pycache__
 *.py[cod]
 *$py.class
+*.pycg
 
 # C extensions
 *.so
