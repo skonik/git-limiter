@@ -5,27 +5,17 @@ from typing import Union
 from git_limiter.backend.base import GitBackend
 
 # Typing Aliases
+from git_limiter.parsers.max_diff import changed_files_parser, deletions_parser, insertions_parser
 from git_limiter.stats import DiffStats
 
 
 ProcessInvokeResult = Union[subprocess.CompletedProcess, subprocess.CalledProcessError]
 
+ZERO_CHANGES = 0
+
 
 class GitSubprocessBackend(GitBackend):
     """Implementation of git API via subprocess module in standard library."""
-
-    DIFF_STATS_RE = re.compile(
-        pattern=r"""
-                (?P<changed_files>\d+)(?P<changed_files_text>\s*files\s*changed).*?  # 31 files changed, 
-                (?P<insertions>\d+)(?P<insertions_text>\s*insertions).*?             # 512 insertions, 
-                (?P<deletions>\d+)(?P<deletions_text>\s*deletion)                   # 512 deletions
-                """,
-        flags=re.VERBOSE,
-    )
-
-    CHANGED_FILES_NUMBER_GROUP = "changed_files"
-    INSERTIONS_GROUP = "insertions"
-    DELETIONS_GROUP = "deletions"
 
     def _run_git_diff_via_subprocess(self) -> ProcessInvokeResult:
         return subprocess.run(
@@ -41,25 +31,20 @@ class GitSubprocessBackend(GitBackend):
 
     def _parse_diff_stats(self, process_invoke_result: ProcessInvokeResult) -> DiffStats:
         """Parse resulting string and extract changed files count, insertions and deletions."""
-        diff_stats_search = self.DIFF_STATS_RE.search(
-            string=process_invoke_result.stdout.decode("utf-8"),
-        )
-        # Extract from captured groups in regex
-        changed_files: str = diff_stats_search.groupdict().get(
-            self.CHANGED_FILES_NUMBER_GROUP,
-        )
-        insertions: str = diff_stats_search.groupdict().get(
-            self.INSERTIONS_GROUP,
-        )
-        deletions: str = diff_stats_search.groupdict().get(
-            self.DELETIONS_GROUP,
+
+        git_diff_output: str = process_invoke_result.stdout.decode("utf-8")
+
+        changed_files = changed_files_parser.parse(string=git_diff_output)
+        insertions = insertions_parser.parse(string=git_diff_output)
+        deletions = deletions_parser.parse(string=git_diff_output)
+
+        diff_stats = DiffStats(
+            changed_files=changed_files,
+            insertions=insertions,
+            deletions=deletions,
         )
 
-        return DiffStats(
-            changed_files=int(changed_files),
-            insertions=int(insertions),
-            deletions=int(deletions),
-        )
+        return diff_stats
 
     def diff_stats(self) -> DiffStats:
         """Invoke git in subprocess and collect stats."""
