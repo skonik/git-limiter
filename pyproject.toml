@@ -62,4 +62,4 @@ markers = [
 
 
 [tool.poetry.scripts]
-git-limiter = 'git_limiter:cli:run'
+git-limiter = 'git_limiter.cli:run'
