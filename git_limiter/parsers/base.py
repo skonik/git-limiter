@@ -1,5 +1,5 @@
 import re
-from typing import Any, Callable, Type
+from typing import Any, Callable
 
 
 class RegexBasedParser:
