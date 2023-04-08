@@ -21,6 +21,13 @@
 
 </p>
 
+<p align="center">
+ <a href=https://asciinema.org/a/vFSqDn1xYykAPSBhaBcvzrY8s>
+  <img src=https://user-images.githubusercontent.com/50069473/230719851-c6839a73-97b1-4eae-8b7a-d18c37aa1575.gif width=600>
+ </a>
+</p>
+
+
 
 
 ## Motivation
@@ -39,6 +46,7 @@ poetry add git-limiter --group dev
 ```console
 git-limiter
 ```
+
 
 
 ## License
