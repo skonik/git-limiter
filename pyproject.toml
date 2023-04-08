@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "git-limiter"
-version = "0.1.0"
+version = "0.1.1"
 description = "Tool allowing to prevent commiting huge diffs"
 authors = ["Sergei Konik <s.konik.dev@gmail.com>"]
 packages = [{include = "git_limiter"}]
