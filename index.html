@@ -52,12 +52,16 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -83,8 +87,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="git-limiter" class="md-header__button md-logo" aria-label="git-limiter" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="assets/logo_simple.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,12 +103,32 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Getting started
+              Home
             
           </span>
         </div>
       </div>
     </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
     
     
     
@@ -181,8 +204,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="." title="git-limiter" class="md-nav__button md-logo" aria-label="git-limiter" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="assets/logo_simple.png" alt="logo">
 
     </a>
     git-limiter
@@ -220,12 +242,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Getting started
+          Home
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
-        Getting started
+        Home
       </a>
       
         
@@ -338,7 +360,14 @@
   
 
 
+<figure>
+<p><img alt="logo" src="assets/logo_simple.png" width="200" />
+  </p>
+<figcaption>git-limiter</figcaption>
+</figure>
 <h1 id="getting-started">Getting started</h1>
+<p><code>git-limiter</code> is a tool comparing your git diff changes with another branch(<code>develop</code>, <code>main</code>, whatever).</p>
+<p>For example, it might be useful if you  want to limit yourself in pushing diffs bigger than 500 insertions/deletions, etc. </p>
 <h2 id="installation">Installation</h2>
 <p>Using pip:</p>
 <pre><code>pip install git-limiter
@@ -353,9 +382,7 @@
 <pre><code>git-limiter --config pyproject.toml
 </code></pre>
 <figure>
-<p><img alt="Usage" src="assets/git_limiter_output.png" />
-  </p>
-<figcaption>Available arguments</figcaption>
+<p><img alt="Output" src="assets/git_limiter_output.png" /></p>
 </figure>
 <figure>
 <p><img alt="Usage" src="assets/git_limiter_usage.png" />
