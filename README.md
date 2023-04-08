@@ -43,3 +43,10 @@ git-limiter
 
 ## License
 MIT
+
+## Contributors
+
+<a href="https://github.com/skonik/git-limiter/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=skonik/git-limiter" />
+</a>
+
