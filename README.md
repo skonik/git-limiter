@@ -1,7 +1,13 @@
 
+<p align="center">
+  <img width="200" height="200" src="https://github.com/skonik/git-limiter/blob/main/docs/src/assets/logo_simple.png">
+
 <h1 align="center">
  git-limiter
 </h1>
+
+</p>
+
 
 <p align="center">
 
@@ -31,7 +37,7 @@
 
 
 ## Motivation
-Sometimes you can parse yourself in a situation where your diff is very huge.
+Sometimes you can find yourself in a situation where your diff is very huge.
 It means it's hard to review. It means that you have a bad habit to do everything at once(and drop some plans in the middle without energy).
 What you really need is to sit down and decompose your task, do it in iterations. It's a good habit you can obtain using this tool. 
 
@@ -81,4 +87,11 @@ MIT
 <a href="https://github.com/skonik/git-limiter/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=skonik/git-limiter" />
 </a>
+
+## 
+
+<p align="center">
+  <img width="200" height="200" src="https://github.com/skonik/git-limiter/blob/main/docs/src/assets/logo_isometric.png">
+
+</p>
 
