@@ -1,0 +1,27 @@
+site_name: git-limiter
+
+docs_dir: src
+
+theme:
+  name: material
+  palette:
+    primary: brown
+
+  features:
+    - content.code.annotate
+    - content.tooltips
+    - content.code.select
+    - content.code.annotate
+    - content.code.copy
+
+
+
+markdown_extensions:
+  # table support
+  - tables
+  # images
+  - attr_list
+  - md_in_html
+
+repo_name: skonik/git-limiter
+repo_url: https://github.com/skonik/git-limiter

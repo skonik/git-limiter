@@ -3,8 +3,6 @@ from typing import Union
 
 from git_limiter import constants
 from git_limiter.backend.base import GitBackend
-
-# Typing Aliases
 from git_limiter.parsers.max_diff import changed_files_parser, deletions_parser, insertions_parser
 from git_limiter.stats import DiffStats
 
