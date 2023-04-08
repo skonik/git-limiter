@@ -1,6 +1,27 @@
-# git-limiter
 
-Stop throwing huge diffs at your reviewer!
+<h1 align="center">
+ git-limiter
+</h1>
+
+<p align="center">
+
+  <img src="https://img.shields.io/badge/python-3.8-blue.svg">
+<img src="https://img.shields.io/badge/code%20style-black-000000.svg">
+<img src="https://codecov.io/gh/skonik/git-limiter/branch/main/graph/badge.svg?token=3IAOQBZRC0">
+<img src="https://github.com/skonik/git-limiter/actions/workflows/test.yml/badge.svg">
+<img src="https://img.shields.io/badge/License-MIT-yellow.svg">
+<img src="https://img.shields.io/badge/pre--commit-enabled-green">
+
+</p>
+
+
+<p align="center">
+  Stop throwing huge diffs at your reviewer!
+
+
+</p>
+
+
 
 ## Motivation
 Sometimes you can parse yourself in a situation where your diff is very huge.
