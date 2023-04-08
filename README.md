@@ -48,6 +48,30 @@ git-limiter
 ```
 
 
+## pre-commit
+
+You can use the following configuration for pre-commit integration:
+
+```yaml
+repos:
+  - repo: local
+    hooks:
+      - id: git-limiter
+        name: git-limiter
+        entry: git-limiter
+        language: python
+        types: [ python ]
+        stages:
+          - commit
+          - push
+        pass_filenames: false
+        always_run: true
+        args: [
+          "--config",
+          "pyproject.toml"
+        ]
+
+```
 
 ## License
 MIT

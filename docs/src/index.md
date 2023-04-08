@@ -1,5 +1,9 @@
 # Getting started
 
+`git-limiter` is a tool comparing your git diff changes with another branch(`develop`, `main`, whatever).
+
+For example, it might be useful if you  want to limit yourself in pushing diffs bigger than 500 insertions/deletions, etc. 
+
 ## Installation
 
 
