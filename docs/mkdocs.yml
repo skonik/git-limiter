@@ -3,9 +3,22 @@ site_name: git-limiter
 docs_dir: src
 
 theme:
+  logo: assets/logo_simple.png
   name: material
   palette:
-    primary: brown
+    - scheme: default
+      primary: deep purple
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: deep purple
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
 
   features:
     - content.code.annotate

@@ -1,4 +1,11 @@
+<figure markdown>
+  ![logo](assets/logo_simple.png){width=200}
+  <figcaption>git-limiter</figcaption>
+
+</figure>
+
 # Getting started
+
 
 `git-limiter` is a tool comparing your git diff changes with another branch(`develop`, `main`, whatever).
 
@@ -33,8 +40,7 @@ git-limiter --config pyproject.toml
 ```
 
 <figure markdown>
-  ![Usage](assets/git_limiter_output.png)
-  <figcaption>Available arguments</figcaption>
+  ![Output](assets/git_limiter_output.png)
 </figure>
 
 

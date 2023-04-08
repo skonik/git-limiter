@@ -1,5 +1,9 @@
 # Configuration
 
+<figure markdown>
+  ![logo](assets/logo_isometric.png){width=200}
+</figure>
+
 ## CLI
 
 You can invoke `git-limiter` with several arguments.
@@ -58,3 +62,6 @@ repos:
         ]
 
 ```
+
+
+
