@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "git-limiter"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+packages = [{include = "git_limiter"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.git-limiter]
+max-changed-files = 13
+max-insertions = 400
+max-deletions = 200
+compared-branch = "test"
+

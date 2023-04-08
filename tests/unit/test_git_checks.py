@@ -6,7 +6,7 @@ import pytest
 
 from git_limiter.backend.git_subprocess_backend import GitSubprocessBackend
 from git_limiter.checks.max_diff import MaxChangedFilesCheck, MaxDeletionsCheck, MaxInsertionsCheck
-from git_limiter.settings import Settings
+from git_limiter.config.settings import Settings
 from git_limiter.stats import collect_git_stats
 from git_limiter.terminal.rich_terminal import RichTerminal
 

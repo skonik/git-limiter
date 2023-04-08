@@ -1,7 +1,7 @@
-import re
 import subprocess
 from typing import Union
 
+from git_limiter import constants
 from git_limiter.backend.base import GitBackend
 
 # Typing Aliases
@@ -31,6 +31,8 @@ class GitSubprocessBackend(GitBackend):
 
     def _parse_diff_stats(self, process_invoke_result: ProcessInvokeResult) -> DiffStats:
         """Parse resulting string and extract changed files count, insertions and deletions."""
+        if process_invoke_result.returncode != constants.SUCCESS_CODE:
+            raise ValueError(process_invoke_result.stderr)
 
         git_diff_output: str = process_invoke_result.stdout.decode("utf-8")
 

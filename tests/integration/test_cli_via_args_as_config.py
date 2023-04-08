@@ -1,15 +1,11 @@
-import dataclasses
-import os
 import subprocess
 from pathlib import Path
-from typing import IO, List, Optional
-from unittest.mock import Mock, patch
 
 import pytest
 from click.testing import CliRunner
 
 from git_limiter import constants
-from git_limiter.cli import CLIArgs, _run_app, run
+from git_limiter.cli import run
 
 
 NEW_INSERTIONS = 500
@@ -39,7 +35,9 @@ def new_file_with_500_insertions():
 
 
 @pytest.mark.integration
-def test_run_app_insertions_success(new_file_with_500_insertions: Path):
+def test_run_app_with_args_insertions_success(
+    new_file_with_500_insertions: Path, temporary_git_branch: None
+):
     # GIVEN:
     #   - click cli runner to test our command
     runner = CliRunner()
@@ -67,7 +65,7 @@ def test_run_app_insertions_success(new_file_with_500_insertions: Path):
 
 
 @pytest.mark.integration
-def test_run_app_no_changes_success():
+def test_run_app_with_args_no_changes_success():
     # GIVEN:
     #   - click cli runner to test our command
     runner = CliRunner()
@@ -95,7 +93,7 @@ def test_run_app_no_changes_success():
 
 
 @pytest.mark.integration
-def test_run_app_error(new_file_with_500_insertions: Path):
+def test_run_app_with_args_error(new_file_with_500_insertions: Path, temporary_git_branch: None):
     # GIVEN:
     #   - click cli runner to test our command
     runner = CliRunner()

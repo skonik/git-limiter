@@ -2,16 +2,35 @@ default_language_version:
     python: python3.8
 
 repos:
-  - repo: local
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.0.2
+    hooks:
+      - id: autoflake
+        args: [
+          "-r",
+          "--in-place",
+          "--remove-unused-variables",
+          "--remove-all-unused-imports",
+          "--ignore-init-module-imports"
+        ]
+
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
     hooks:
       - id: black
-        name: black
-        entry: poetry run black git_limiter tests
-        language: python
-        types: [python]
+        language_version: python3.8
+        args: [
+          "git_limiter",
+          "tests",
+        ]
 
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
       - id: isort
         name: isort
-        entry: poetry run isort git_limiter tests
-        language: python
-        types: [python]
+        args: [
+          "isort",
+          "git_limiter",
+          "tests"
+        ]

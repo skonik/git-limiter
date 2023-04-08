@@ -1,7 +1,6 @@
 import abc
 
-from git_limiter.backend.base import GitBackend
-from git_limiter.settings import Settings
+from git_limiter.config.settings import Settings
 from git_limiter.stats import CollectedStats
 from git_limiter.terminal.base import Terminal
 

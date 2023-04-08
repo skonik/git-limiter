@@ -9,8 +9,8 @@ from git_limiter.backend.base import GitBackend
 from git_limiter.backend.git_subprocess_backend import GitSubprocessBackend
 from git_limiter.checks.base import GitCheck
 from git_limiter.checks.max_diff import MaxChangedFilesCheck, MaxDeletionsCheck, MaxInsertionsCheck
-from git_limiter.settings import Settings
-from git_limiter.stats import CollectedStats, collect_git_stats
+from git_limiter.config.settings import Settings
+from git_limiter.stats import collect_git_stats
 from git_limiter.terminal.rich_terminal import RichTerminal
 
 
@@ -20,6 +20,7 @@ class CLIArgs:
     max_insertions: int
     max_deletions: int
     max_changed_files: int
+    config: str
 
 
 def _make_decision(check_results: List[bool]) -> int:
@@ -38,9 +39,12 @@ def _run_app(cli_args: CLIArgs):
         max_changed_files=cli_args.max_changed_files,
     )
 
+    settings.override_from_config_file(config_path=cli_args.config)
+
     git_backend: GitBackend = GitSubprocessBackend(
         settings=settings,
     )
+
     check_classes: List[Type[GitCheck]] = [
         MaxChangedFilesCheck,
         MaxInsertionsCheck,
@@ -94,16 +98,24 @@ def _run_app(cli_args: CLIArgs):
     type=int,
     help="Maximum number of changed files",
 )
+@click.option(
+    "--config",
+    default=constants.DEFAULT_CONFIG,
+    type=str,
+    help="Path to config(pyproject.toml only supported)",
+)
 def run(
     compared_branch: str,
     max_insertions: int,
     max_deletions: int,
     max_changed_files: int,
+    config: str,
 ) -> None:
     cli_args = CLIArgs(
         compared_branch=compared_branch,
         max_insertions=max_insertions,
         max_deletions=max_deletions,
         max_changed_files=max_changed_files,
+        config=config,
     )
     _run_app(cli_args=cli_args)

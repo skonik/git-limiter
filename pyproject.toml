@@ -1,14 +1,15 @@
 [tool.poetry]
 name = "git-limiter"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "Tool allowing to prevent commiting huge diffs"
+authors = ["Sergei Konik <s.konik.dev@gmail.com>"]
 packages = [{include = "git_limiter"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 click = "^8.1.3"
 rich = "^13.3.3"
+tomli = "^2.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -16,6 +17,7 @@ pytest = "^7.2.2"
 pytest-cov = "^4.0.0"
 black = "^23.3.0"
 isort = "^5.12.0"
+autoflake = "^2.0.2"
 
 [build-system]
 requires = ["poetry-core"]

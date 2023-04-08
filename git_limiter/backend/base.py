@@ -1,7 +1,7 @@
 import abc
 from typing import Optional
 
-from git_limiter.settings import Settings
+from git_limiter.config.settings import Settings
 from git_limiter.stats import DiffStats
 
 
